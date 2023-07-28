@@ -80,5 +80,50 @@ LeetCode
     int arr[] = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
     ```
 
-    
 
+14. 最长公共前缀
+
+    ```
+    找到数组中最短的字符串
+    遍历数组中的所有字符串对应位置处的字符
+    ```
+
+15. 三数之和 
+
+    ```
+    本题中强调了需要排除重复的元组，所以不建议使用暴力法，且暴力法容易超时
+    排序 + 双指针 + 去重 将时间复杂度降低为O(N^2)  
+    ```
+
+17. 电话号码的字母组合
+
+    ```c++
+    n个for循环问题（使用回溯法）
+    void backtracking(const string& digits, int index) {
+        if (index == digits.size()) {
+            res.push_back(s);
+            return;
+        }
+        int digit = digits[index] - '0'; //获取digits在index位置处的数字
+        string leeter = phoneStr[digit];
+        for (int i = 0; i < leeter.size(); i++) {
+            s.push_back(leeter[i]);
+            backtracking(digits, index + 1);
+            s.pop_back();
+        }
+    }
+    ```
+
+18. 四数之和
+
+    ```c++
+    排序 + 双指针 + 去重 + 防溢出  将时间复杂度降低为O(N^3)  
+    关键去重位置;
+    for (int j = i + 1; j < lenght - 2; j++) {
+        if (j > i+1 && nums[j] == nums[j - 1]) {  //j > i+1 关键点
+            continue;
+        }
+    }
+    ```
+
+    
