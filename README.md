@@ -126,4 +126,62 @@ LeetCode
     }
     ```
 
+
+19. 删除链表倒数第N个数
+
+    ```
+    快慢指针 ， 如果快指针直接走到尾，慢指针还没走，说明要删除的是头节点
+    需要注意的是删除的是头节点的情况
+    ```
+
+
+20. 有效的括号
+
+    ```
+    用栈进行匹配
+    ```
+
+21. 合并两个有序链表
+
+    ```c++
+    迭代法和递归法
+    //递归算法
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        if (l1 == nullptr) {
+            return l2;
+        } else if (l2 == nullptr) {
+            return l1;
+        } else if (l1->val < l2->val) {
+            l1->next = mergeTwoLists(l1->next, l2);
+            return l1;
+        } else {
+            l2->next = mergeTwoLists(l1, l2->next);
+            return l2;
+        }
+    }
+    ```
+
+22. 括号生成
+
+    ```c++
+    // 回溯递归
+    void backTracking(vector<string> &v, string s, int left, int right) {
+        //递归出口
+        if (left == 0 && right == 0) {
+            v.push_back(s);
+            return;
+        }
+        if (left == 0) {
+            backTracking(v, s + ")", left, right - 1);
+        }
+        else if (left == right) {
+            backTracking(v, s + "(", left - 1, right);
+        }
+        else if (left < right) {
+            backTracking(v, s + "(", left - 1, right);
+            backTracking(v, s + ")", left, right - 1);
+        }
+    }
+    ```
+
     
